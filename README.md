@@ -169,6 +169,50 @@ seoul_apartment_dashboard/
 > cd "seoul_apartment_dashboard" && rsync -a --delete app.py desktop.py data_loader.py requirements.txt data "서울 아파트 대시보드.app/Contents/Resources/app/"
 > ```
 
+## 외부 공개 배포 (Streamlit Community Cloud)
+
+앱 실행에는 **API 키가 필요 없습니다.** 키는 데이터를 만드는 `fetch_data.py` 에만 쓰이고,
+앱은 커밋된 `data/apartment_data.json` 을 읽습니다. 아래 순서로 무료 공개할 수 있습니다.
+
+### 1) GitHub 저장소에 올리기
+
+`.gitignore` 가 **`.env`(인증키)·`.venv/`·`*.app/`·`_raw_transactions.json`** 을 자동 제외합니다. (검증됨)
+
+```bash
+cd seoul_apartment_dashboard
+git init && git add -A && git commit -m "init"
+git branch -M main
+git remote add origin https://github.com/<사용자명>/<저장소>.git
+git push -u origin main
+```
+
+> ⚠️ 푸시 전 반드시 확인: `git status` 에 `.env` / `example.env.py` 가 보이면 안 됩니다.
+> (`git check-ignore .env` 가 `.env` 를 출력하면 정상적으로 무시되는 것)
+
+### 2) Streamlit Community Cloud 배포
+
+1. <https://share.streamlit.io> 접속 → GitHub 계정 연결
+2. **New app** → 저장소/브랜치(`main`)/메인 파일 `app.py` 선택 → Deploy
+3. 클라우드가 `requirements.txt`(streamlit, plotly)만 설치하고 공개 URL을 생성합니다.
+   - 데스크톱용 `pywebview` 는 웹 배포에 불필요하므로 `requirements-desktop.txt` 로 분리되어 있습니다.
+
+### 3) 데이터 자동 갱신 (GitHub Actions)
+
+`.github/workflows/update-data.yml` 이 **매일 KST 06:00** 에 `fetch_data.py` 를 실행해
+`data/apartment_data.json` 을 갱신·커밋합니다. 푸시가 일어나면 Streamlit Cloud가 자동 재배포됩니다.
+
+- **저장소 설정 필요**: GitHub 저장소 → **Settings → Secrets and variables → Actions → New repository secret**
+  - 이름: `MOLIT_API_KEY`, 값: 공공데이터포털 인증키
+- 수동 실행: 저장소 **Actions 탭 → "아파트 실거래 데이터 자동 갱신" → Run workflow**
+- 앱은 `@st.cache_data(ttl=3600)` 으로 최대 1시간 내 최신 데이터를 반영합니다.
+
+### 배포 시 주의
+
+- **인증키 유출 금지**: `.env` / `example.env.py` 는 절대 커밋하지 마세요(이미 gitignore 처리됨). 키는 GitHub Secrets 로만.
+- **출처·면책**: 화면에 출처(국토부 실거래가)와 "참고용, 투자 판단 근거 아님" 문구가 표시됩니다.
+- **약관**: 공공데이터포털 활용 약관(출처 표기·재배포)과 GeoJSON 라이선스(southkorea/seoul-maps)를 확인하세요.
+- 서버가 국토부 API를 직접 호출하지 않고(사전 생성된 JSON 서비스), 트래픽 제한 걱정이 없습니다.
+
 ## 총평(이상 징후) 로직
 
 `data_loader.detect_anomalies()` 가 데이터 수치만으로 이상치를 자동 탐지합니다 (`latest_change_pct` 가 `null` 인 구는 제외).

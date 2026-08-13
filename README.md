@@ -48,6 +48,39 @@ python fetch_data.py
 > JSON을 생성합니다. (본 저장소에는 동일 형식의 **샘플/테스트 데이터**가 들어 있어 바로 실행해 볼 수 있으며,
 > `fetch_data.py` 를 실행하면 실제 데이터로 덮어써집니다.)
 
+### 데이터 갱신 요약
+
+| 환경 | 갱신 방식 |
+|---|---|
+| **로컬** | ① 앱 우측 **"🔄 실거래 재수집 후 새로고침"** 버튼(수동, 인증키 필요) ② **launchd 스케줄러가 6시간마다(00·06·12·18시) 자동 재수집** |
+| **공개 배포** | 수동 갱신 **불가(읽기 전용)**. **GitHub Actions**가 매일 자동 수집·커밋 → 앱이 `ttl` 로 반영 |
+
+> 앱은 `@st.cache_data(ttl=3600)` 이라, 파일이 갱신되면 최대 1시간 내 화면에 자동 반영됩니다.
+
+### 로컬 자동 갱신 (launchd, macOS)
+
+`scripts/com.local.seoul.apt.fetch.plist` 가 프로젝트 `.venv` 로 `fetch_data.py` 를 **매일 00·06·12·18시**에 실행합니다.
+(인증키는 프로젝트 폴더의 `.env` 에서 읽으므로 plist에는 키가 들어가지 않습니다.)
+
+설치 / 해제:
+
+```bash
+# 설치(등록)
+cp scripts/com.local.seoul.apt.fetch.plist ~/Library/LaunchAgents/
+launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.local.seoul.apt.fetch.plist
+launchctl list | grep seoul          # 등록 확인
+
+# 지금 즉시 한 번 실행(테스트)
+launchctl kickstart -k gui/$(id -u)/com.local.seoul.apt.fetch
+tail -f ~/Library/Logs/seoul-apt-fetch.log
+
+# 해제(중지·삭제)
+launchctl bootout gui/$(id -u)/com.local.seoul.apt.fetch
+rm ~/Library/LaunchAgents/com.local.seoul.apt.fetch.plist
+```
+
+> 경로/주기를 바꾸려면 `scripts/…plist` 를 수정한 뒤 위 "해제 → 설치"를 다시 하면 됩니다. 실행 로그는 `~/Library/Logs/seoul-apt-fetch.log`.
+
 ## 실행 방법
 
 > 💡 **웹 브라우저가 아니라, 자체 데스크톱 앱 창(native window)으로 뜹니다.**

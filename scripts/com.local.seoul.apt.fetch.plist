@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.local.seoul.apt.fetch</string>
+
+  <!-- 프로젝트 venv 의 python 으로 fetch_data.py 실행 -->
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/rist/Documents/AI 놀이/seoul_apartment_dashboard/.venv/bin/python</string>
+    <string>/Users/rist/Documents/AI 놀이/seoul_apartment_dashboard/fetch_data.py</string>
+    <string>--months</string>
+    <string>24</string>
+  </array>
+
+  <!-- .env(인증키)를 읽도록 작업 디렉터리를 프로젝트 폴더로 지정 -->
+  <key>WorkingDirectory</key>
+  <string>/Users/rist/Documents/AI 놀이/seoul_apartment_dashboard</string>
+
+  <!-- 6시간마다: 매일 00·06·12·18시 정각 실행 (자정 기준) -->
+  <key>StartCalendarInterval</key>
+  <array>
+    <dict><key>Hour</key><integer>0</integer><key>Minute</key><integer>0</integer></dict>
+    <dict><key>Hour</key><integer>6</integer><key>Minute</key><integer>0</integer></dict>
+    <dict><key>Hour</key><integer>12</integer><key>Minute</key><integer>0</integer></dict>
+    <dict><key>Hour</key><integer>18</integer><key>Minute</key><integer>0</integer></dict>
+  </array>
+
+  <!-- 로그 -->
+  <key>StandardOutPath</key>
+  <string>/Users/rist/Library/Logs/seoul-apt-fetch.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/rist/Library/Logs/seoul-apt-fetch.log</string>
+
+  <!-- 로드 시 즉시 실행하지 않음(예정된 시각에만) -->
+  <key>RunAtLoad</key>
+  <false/>
+</dict>
+</plist>

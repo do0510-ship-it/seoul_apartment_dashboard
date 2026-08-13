@@ -391,10 +391,10 @@ with right:
     if st.session_state.pop("_refetch_done", False):
         st.success("✅ 재수집 완료 — 최신 데이터를 반영했습니다.")
 
-    st.markdown("#### 🔄 데이터")
-    st.caption(f"마지막 갱신: {generated_at}")
     if _can_refetch():
-        # 로컬(인증키 보유): 국토부 API 재수집 후 새로고침
+        # 로컬(인증키 보유): 국토부 API 재수집 후 새로고침 (자동 갱신과 별개로 수동 즉시 갱신용)
+        st.markdown("#### 🔄 데이터")
+        st.caption(f"마지막 갱신: {generated_at}")
         if st.button("🔄 실거래 재수집 후 새로고침", use_container_width=True):
             with st.spinner("국토부 실거래가 재수집 중… (약 1분)"):
                 ok, msg = _run_refetch()
@@ -404,13 +404,12 @@ with right:
                 st.rerun()
             else:
                 st.error(f"재수집 실패: {msg}")
-        st.caption("국토부 API로 실거래를 다시 수집합니다. (로컬 전용 · 약 1분)")
+        st.caption("국토부 API로 실거래를 다시 수집합니다. (로컬 전용 · 약 1분) · 6시간마다(00·06·12·18시) 자동 갱신")
     else:
-        # 공개 배포(키 없음): 최신 JSON 재로딩만
-        if st.button("🔄 데이터 새로고침", use_container_width=True):
-            st.cache_data.clear()
-            st.rerun()
-        st.caption("서버의 최신 데이터 파일을 다시 불러옵니다.")
+        # 공개 배포(키 없음): 수동 갱신 비활성화 — 데이터는 자동으로만 갱신
+        st.markdown("#### 📅 데이터")
+        st.caption(f"마지막 갱신: {generated_at}")
+        st.caption("데이터는 매일 자동으로 갱신됩니다.")
 
     st.divider()
     st.markdown("#### 🔎 구 선택")

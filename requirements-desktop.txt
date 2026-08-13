@@ -1,0 +1,4 @@
+# 로컬 '데스크톱 앱 창'(desktop.py, PyWebView) 실행용 추가 의존성.
+# 웹/클라우드 배포에는 필요 없습니다. (리눅스 호스팅에서 웹뷰 시스템 라이브러리 이슈 방지 위해 분리)
+-r requirements.txt
+pywebview>=5.0

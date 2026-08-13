@@ -1,0 +1,4 @@
+# 웹 앱(app.py) 실행/배포용 의존성 — Streamlit Cloud 가 이 파일을 사용합니다.
+# on_select(플롯 클릭 이벤트 선택)와 st.dialog 를 쓰므로 Streamlit 1.35 이상 권장
+streamlit>=1.35
+plotly>=5.20

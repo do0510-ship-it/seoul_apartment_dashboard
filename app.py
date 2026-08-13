@@ -12,10 +12,18 @@
 
 from __future__ import annotations
 
+import os
+import subprocess
+import sys
+from pathlib import Path
+
 import plotly.graph_objects as go
 import streamlit as st
 
 import data_loader as dl
+
+APP_DIR = Path(__file__).resolve().parent
+FETCH_SCRIPT = APP_DIR / "fetch_data.py"
 
 # ---------------------------------------------------------------------------
 # 페이지 설정
@@ -52,6 +60,49 @@ COLOR_UP = "#d6301f"     # 상승(빨강)
 COLOR_DOWN = "#2166ac"   # 하락(파랑)
 COLOR_FLAT = "#bdbdbd"   # 보합(회색)
 COLOR_NODATA = "#d9d9d9"  # 데이터 없음(옅은 회색)
+
+
+# ---------------------------------------------------------------------------
+# 데이터 갱신 헬퍼
+#   - 로컬(인증키 보유): 버튼으로 fetch_data.py 재수집까지 실행
+#   - 공개 배포(키 없음): 버튼은 최신 JSON 재로딩(캐시 비우기)만 수행
+# ---------------------------------------------------------------------------
+def _api_key_available() -> bool:
+    """국토부 인증키가 로컬에 있는지 확인 (환경변수 또는 .env)."""
+    if os.environ.get("MOLIT_API_KEY", "").strip():
+        return True
+    env_file = APP_DIR / ".env"
+    if env_file.exists():
+        try:
+            for line in env_file.read_text(encoding="utf-8").splitlines():
+                s = line.strip()
+                if s.startswith("MOLIT_API_KEY=") and s.split("=", 1)[1].strip():
+                    return True
+        except OSError:
+            return False
+    return False
+
+
+def _can_refetch() -> bool:
+    """재수집(fetch_data.py 실행) 가능 여부. 공개 배포에는 키가 없어 False."""
+    return FETCH_SCRIPT.exists() and _api_key_available()
+
+
+def _run_refetch(months: int = 24) -> tuple[bool, str]:
+    """fetch_data.py 를 실행해 data/apartment_data.json 재생성. (성공여부, 메시지)."""
+    try:
+        r = subprocess.run(
+            [sys.executable, str(FETCH_SCRIPT), "--months", str(months)],
+            cwd=str(APP_DIR), capture_output=True, text=True, timeout=900,
+        )
+    except subprocess.TimeoutExpired:
+        return False, "재수집 시간 초과(900초)."
+    except Exception as e:  # noqa: BLE001
+        return False, f"실행 오류: {e}"
+    if r.returncode == 0:
+        lines = (r.stdout or "").strip().splitlines()
+        return True, (lines[-1] if lines else "완료")
+    return False, (r.stderr or r.stdout or "알 수 없는 오류").strip()[-400:]
 
 
 @st.cache_data(show_spinner=False, ttl=3600)  # 1시간마다 데이터 재로딩(배포 시 자동 반영)
@@ -337,6 +388,31 @@ def show_district_dialog(name: str):
 left, right = st.columns([3, 1], gap="large")
 
 with right:
+    if st.session_state.pop("_refetch_done", False):
+        st.success("✅ 재수집 완료 — 최신 데이터를 반영했습니다.")
+
+    st.markdown("#### 🔄 데이터")
+    st.caption(f"마지막 갱신: {generated_at}")
+    if _can_refetch():
+        # 로컬(인증키 보유): 국토부 API 재수집 후 새로고침
+        if st.button("🔄 실거래 재수집 후 새로고침", use_container_width=True):
+            with st.spinner("국토부 실거래가 재수집 중… (약 1분)"):
+                ok, msg = _run_refetch()
+            if ok:
+                st.cache_data.clear()
+                st.session_state["_refetch_done"] = True
+                st.rerun()
+            else:
+                st.error(f"재수집 실패: {msg}")
+        st.caption("국토부 API로 실거래를 다시 수집합니다. (로컬 전용 · 약 1분)")
+    else:
+        # 공개 배포(키 없음): 최신 JSON 재로딩만
+        if st.button("🔄 데이터 새로고침", use_container_width=True):
+            st.cache_data.clear()
+            st.rerun()
+        st.caption("서버의 최신 데이터 파일을 다시 불러옵니다.")
+
+    st.divider()
     st.markdown("#### 🔎 구 선택")
     st.caption("지도에서 구를 클릭하거나, 아래에서 선택해 추이를 확인하세요.")
     all_names = [r["name"] for r in dl.districts_table(data)]

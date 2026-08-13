@@ -8,15 +8,16 @@
   <!-- 프로젝트 venv 의 python 으로 fetch_data.py 실행 -->
   <key>ProgramArguments</key>
   <array>
-    <string>/Users/rist/Documents/AI 놀이/seoul_apartment_dashboard/.venv/bin/python</string>
-    <string>/Users/rist/Documents/AI 놀이/seoul_apartment_dashboard/fetch_data.py</string>
+    <string>/Users/rist/seoul_apartment_dashboard/.venv/bin/python</string>
+    <string>/Users/rist/seoul_apartment_dashboard/fetch_data.py</string>
     <string>--months</string>
     <string>24</string>
   </array>
 
   <!-- .env(인증키)를 읽도록 작업 디렉터리를 프로젝트 폴더로 지정 -->
+  <!-- (프로젝트는 TCC 보호 폴더인 ~/Documents 밖에 있어야 백그라운드 실행이 가능) -->
   <key>WorkingDirectory</key>
-  <string>/Users/rist/Documents/AI 놀이/seoul_apartment_dashboard</string>
+  <string>/Users/rist/seoul_apartment_dashboard</string>
 
   <!-- 6시간마다: 매일 00·06·12·18시 정각 실행 (자정 기준) -->
   <key>StartCalendarInterval</key>

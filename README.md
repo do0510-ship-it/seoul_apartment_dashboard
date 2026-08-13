@@ -83,22 +83,20 @@ rm ~/Library/LaunchAgents/com.local.seoul.apt.fetch.plist
 
 ## 실행 방법
 
-> 💡 **웹 브라우저가 아니라, 자체 데스크톱 앱 창(native window)으로 뜹니다.**
-> 기존 Streamlit UI를 그대로 유지하되 **PyWebView**(macOS: WKWebView/Cocoa)로 감싸서, 주소창·탭 같은
-> 브라우저 크롬 없이 일반 데스크톱 프로그램처럼 실행됩니다. 창을 닫으면 내부 서버도 함께 종료됩니다.
+> 💡 **로컬 관리자 앱은 웹 브라우저가 아니라 자체 데스크톱 창(native window)으로 뜹니다.**
+> Streamlit UI를 **PyWebView**(macOS: WKWebView/Cocoa)로 감싸 브라우저 크롬 없이 실행됩니다.
+> (외부 사용자에게 제공하는 방식은 [외부 공개 배포](#외부-공개-배포-streamlit-community-cloud) 참고 — 그쪽은 웹 URL입니다.)
 
-### 방법 A. 더블클릭으로 실행 (macOS, 추천 · 터미널 명령 불필요)
+### 방법 A. 더블클릭으로 실행 (macOS, 로컬 관리자용 · 추천)
 
-- **`서울 아파트 대시보드.app`** — **자체 완결형 앱**. 파이썬 실행 환경과 라이브러리(streamlit, plotly, pywebview 등)가
-  앱 내부(`Contents/Resources/venv`)에 통째로 들어 있어 별도 설치 없이 바로 실행됩니다(약 340MB).
-  더블클릭하면 **터미널·브라우저 없이 데스크톱 앱 창**이 바로 뜹니다. Dock이나 `응용 프로그램` 폴더로 옮겨 두고 써도 됩니다.
-- **`run.command`** — 가벼운 실행 스크립트. 더블클릭하면 (최초 1회) 프로젝트 폴더에 `.venv`를 만들어 라이브러리를
-  설치한 뒤 데스크톱 앱 창을 띄웁니다. 이 경우 로그 확인용 터미널 창이 함께 뜹니다.
+- **`서울 아파트 대시보드 (관리자).app`** — 프로젝트의 `.venv`/`.env` 로 대시보드를 데스크톱 창으로 띄웁니다.
+  **"🔄 실거래 재수집 후 새로고침" 버튼**이 있고 자동 갱신(launchd)도 반영됩니다. 더블클릭하면 터미널·브라우저 없이 창이 뜹니다.
+  (이 `.app` 은 **프로젝트 폴더 안에** 있어야 하며, 항상 프로젝트의 **최신 데이터**를 읽습니다. 로그: `~/Library/Logs/서울아파트대시보드-관리자.log`)
+- **`run.command`** — 같은 앱을 여는 대안. 더블클릭하면 (최초 1회) `.venv`를 자동 생성·설치한 뒤 창을 띄웁니다(로그용 터미널 창 함께).
 
-> - `.app`은 라이브러리가 내장돼 **처음부터 즉시 실행**됩니다. `run.command`는 최초 1회만 설치로 몇 분 걸립니다.
-> - 처음 열 때 "확인되지 않은 개발자" 경고가 뜨면, 앱을 **오른쪽 클릭 → 열기 → 열기**로 한 번만 허용해 주세요.
-> - 종료: **앱 창을 닫으면** 됩니다. (`.app` 로그는 `~/Library/Logs/서울아파트대시보드.log` 에 기록)
-> - `.app`은 이 Mac의 파이썬(Command Line Tools)에 맞춰 빌드되어 **이 컴퓨터에서 바로 동작**합니다.
+> - **최초 1회**는 `run.command`로 열어 `.venv`를 구성하세요. 이후엔 `.app`으로 바로 열 수 있습니다.
+> - 처음 열 때 "확인되지 않은 개발자" 경고가 뜨면, 앱/파일을 **오른쪽 클릭 → 열기 → 열기**로 한 번만 허용해 주세요.
+> - 종료: **창을 닫으면** 됩니다.
 
 ### 방법 A-2. 개발 중 데스크톱 창으로 직접 실행
 
@@ -135,14 +133,12 @@ seoul_apartment_dashboard/
 ├── fetch_data.py              # 실거래 데이터 수집 -> data/apartment_data.json 생성 (사용자 스크립트)
 ├── requirements.txt           # 의존성 (streamlit, plotly, pywebview)
 ├── README.md
-├── run.command                # ▶ 더블클릭 실행 스크립트 (최초 1회 .venv 자동 생성)
-├── 서울 아파트 대시보드.app     # ▶ 자체 완결형 앱 (파이썬 환경/라이브러리 내장, 약 340MB)
-│   └── Contents/
-│       ├── MacOS/launcher              # 진입점: 내장 venv 로 desktop.py 실행
-│       └── Resources/
-│           ├── run.command             # 내장 venv 로 desktop.py 실행(로그용)
-│           ├── app/                     # app.py 등 소스 사본
-│           └── venv/                    # 내장 파이썬 가상환경(streamlit·plotly·pywebview…)
+├── run.command                # ▶ 더블클릭 실행(최초 1회 .venv 자동 생성)
+├── 서울 아파트 대시보드 (관리자).app  # ▶ 로컬 관리자용 클릭 실행 앱 (프로젝트 .venv/.env 사용, git 제외)
+├── scripts/
+│   └── com.local.seoul.apt.fetch.plist  # launchd 자동 갱신(6시간마다·00/06/12/18시) 정의
+├── .github/workflows/update-data.yml    # 외부 배포용 데이터 자동 갱신(GitHub Actions)
+├── .env / .env.example        # 국토부 인증키 (.env 는 git 제외)
 └── data/
     ├── apartment_data.json     # 아파트 실거래 데이터 (fetch_data.py 가 생성)
     └── seoul_districts.geojson # 서울시 25개 자치구 경계 (출처: southkorea/seoul-maps)
@@ -192,15 +188,7 @@ seoul_apartment_dashboard/
      마지막 완결 월의 전월 대비 변동률**로 계산합니다.
    - `daily/monthly/yearly[].pct` ← 각 기간 단위 등락률, `avg_manwon_per_m2` ← 평균 거래단가(만원/㎡), `count` ← 거래건수
    - `meta.source`, `meta.generated_at` 을 실제 값으로 채우면 화면 상단 문구가 자동으로 바뀝니다.
-2. 앱을 다시 실행(또는 새로고침)하면 반영됩니다.
-
-> ⚠️ **`.app`은 소스/데이터의 사본을 내부에 갖고 있습니다.** 데이터·코드를 수정 중이라면 프로젝트 루트 파일을
-> 그대로 쓰는 **`run.command`** 로 실행하면 즉시 반영됩니다. 수정 내용을 `.app`에도 반영하려면
-> 아래 한 줄로 앱 내부 사본만 갱신하세요(파이썬 환경은 그대로 재사용):
->
-> ```bash
-> cd "seoul_apartment_dashboard" && rsync -a --delete app.py desktop.py data_loader.py requirements.txt data "서울 아파트 대시보드.app/Contents/Resources/app/"
-> ```
+2. 앱을 다시 실행(또는 새로고침)하면 반영됩니다. (로컬 관리자 앱은 프로젝트 파일을 직접 읽으므로 별도 동기화가 필요 없습니다.)
 
 ## 외부 공개 배포 (Streamlit Community Cloud)
 

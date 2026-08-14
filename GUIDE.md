@@ -19,7 +19,7 @@
 | **누가 씀** | 관리자(나) 혼자 | 누구나 (외부 사용자) |
 | **어떻게 열어** | `서울 아파트 대시보드 (관리자).app` **더블클릭** | 브라우저에서 **웹 URL 접속** |
 | **어디서 돎** | 내 Mac 안에서만 (남은 못 봄) | 클라우드 서버 (모두가 같은 걸 봄) |
-| **데이터 갱신** | 재수집 버튼 + **6시간마다 자동**(launchd) | **GitHub Actions가 매일 자동** |
+| **데이터 갱신** | 재수집 버튼 + **6시간마다 자동**(launchd) | **내 Mac이 6시간마다 수집→GitHub push** → 웹 자동 반영 |
 | **인증키 필요?** | ✅ (`.env`) | ❌ (읽기 전용) |
 
 > ⚠️ **핵심 오해 주의:** 로컬 `.app`을 남에게 줘도 그 사람은 내 데이터를 못 봅니다(각자 자기 Mac에서 자기 서버가 돎).
@@ -55,7 +55,9 @@
 
 ## 3. 자동 갱신 스케줄러 (launchd) 관리
 
-매일 00·06·12·18시에 `fetch_data.py`가 자동 실행됩니다. 정의 파일: `scripts/com.local.seoul.apt.fetch.plist`.
+매일 00·06·12·18시에 **`scripts/fetch_and_push.sh`** 가 자동 실행됩니다 (수집 → 데이터 변경 시 GitHub 자동 push → 웹 갱신).
+정의 파일: `scripts/com.local.seoul.apt.fetch.plist`. 로그: `~/Library/Logs/seoul-apt-fetch.log`.
+> 수집이 부족하면(예: API 일일 한도) `fetch_data.py` 의 안전장치가 **기존 데이터를 보존**하고 push 하지 않습니다(웹 안 망가짐).
 
 ```bash
 # 상태 확인 (등록돼 있으면 한 줄 출력)
@@ -96,9 +98,10 @@ rm ~/Library/LaunchAgents/com.local.seoul.apt.fetch.plist
 2. **Streamlit Cloud 배포** — <https://share.streamlit.io> → GitHub 연결 → **New app** →
    저장소·브랜치 `main`·메인 파일 `app.py` 선택 → **Deploy** → 공개 URL 생성.
 
-3. **데이터 자동 갱신 (GitHub Actions)** — 저장소 **Settings → Secrets and variables → Actions →
-   New repository secret** 에 `MOLIT_API_KEY` = 공공데이터포털 인증키 등록.
-   → 매일 자동 수집·커밋 → 앱 자동 재배포. (`.github/workflows/update-data.yml`)
+3. **웹 데이터 자동 갱신 = 내 Mac이 담당** — ⚠️ 해외 GitHub 서버는 한국 국토부 API에 **접속이 안 되므로**
+   (GitHub Actions 방식은 불가), **로컬 launchd 가 6시간마다 수집한 뒤 GitHub 에 자동 push** 합니다
+   (`scripts/fetch_and_push.sh`). push 되면 Streamlit Cloud 가 자동 재배포됩니다.
+   → **GitHub Secret 설정 불필요.** 단, **내 Mac 이 켜져 있을 때** 갱신됩니다. (자세히는 [3장](#3-자동-갱신-스케줄러-launchd-관리))
 
 > 외부 사용자에게는 **웹 URL 링크 하나만** 주면 됩니다. 폰/PC 어디서든 접속되고, 원하면 브라우저의
 > "홈 화면에 추가 / 설치(PWA)"로 앱 아이콘처럼 쓸 수 있습니다. **읽기 전용**이라 갱신 버튼은 안 보입니다.
@@ -121,7 +124,8 @@ rm ~/Library/LaunchAgents/com.local.seoul.apt.fetch.plist
 
 ### 🔐 보안 (중요)
 - **`.env` 와 `example.env.py` 는 절대 GitHub에 올리지 마세요.** (이미 `.gitignore` 로 제외됨)
-- 외부(클라우드) 자동 갱신용 키는 **GitHub Secrets** 에만 넣습니다.
+- 인증키는 **로컬 `.env` 에만** 있으면 됩니다. (수집은 내 Mac에서만 하므로 GitHub Secret 은 불필요)
+- GitHub push용 토큰은 `~/.git-credentials`(권한 600)에 저장돼 있고, 언제든 GitHub에서 폐기(Revoke) 가능합니다.
 - 로컬 관리자 `.app` 에는 키가 들어있지 않고, 실행 시 프로젝트 `.env` 를 참조합니다.
 
 ---
@@ -154,8 +158,9 @@ rm ~/Library/LaunchAgents/com.local.seoul.apt.fetch.plist
 ├── .env / .env.example            # 인증키 (.env 는 git 제외)
 ├── run.command                    # 로컬 실행(최초 .venv 자동 생성)
 ├── 서울 아파트 대시보드 (관리자).app  # 로컬 관리자 클릭 실행 앱 (git 제외)
-├── scripts/…plist                 # 자동 갱신(launchd) 정의
-├── .github/workflows/…yml         # 외부 배포 자동 갱신(GitHub Actions)
+├── scripts/
+│   ├── fetch_and_push.sh          # 수집 → 데이터 변경 시 GitHub 자동 push (웹 갱신)
+│   └── …plist                     # 자동 갱신(launchd) 정의 (6시간마다)
 ├── README.md / GUIDE.md           # 문서
 └── data/
     ├── apartment_data.json        # 실거래 데이터(앱이 읽음)

@@ -53,7 +53,7 @@ python fetch_data.py
 | 환경 | 갱신 방식 |
 |---|---|
 | **로컬** | ① 앱 우측 **"🔄 실거래 재수집 후 새로고침"** 버튼(수동, 인증키 필요) ② **launchd 스케줄러가 6시간마다(00·06·12·18시) 자동 재수집** |
-| **공개 배포** | 수동 갱신 **불가(읽기 전용)**. **GitHub Actions**가 매일 자동 수집·커밋 → 앱이 `ttl` 로 반영 |
+| **공개 배포** | 수동 갱신 **불가(읽기 전용)**. **로컬 Mac 이 6시간마다 수집→GitHub push** → 앱이 자동 재배포 |
 
 > 앱은 `@st.cache_data(ttl=3600)` 이라, 파일이 갱신되면 최대 1시간 내 화면에 자동 반영됩니다.
 
@@ -137,7 +137,7 @@ seoul_apartment_dashboard/
 ├── 서울 아파트 대시보드 (관리자).app  # ▶ 로컬 관리자용 클릭 실행 앱 (프로젝트 .venv/.env 사용, git 제외)
 ├── scripts/
 │   └── com.local.seoul.apt.fetch.plist  # launchd 자동 갱신(6시간마다·00/06/12/18시) 정의
-├── .github/workflows/update-data.yml    # 외부 배포용 데이터 자동 갱신(GitHub Actions)
+├── scripts/fetch_and_push.sh            # 로컬 수집 → GitHub 자동 push (웹 갱신)
 ├── .env / .env.example        # 국토부 인증키 (.env 는 git 제외)
 └── data/
     ├── apartment_data.json     # 아파트 실거래 데이터 (fetch_data.py 가 생성)
@@ -217,19 +217,22 @@ git push -u origin main
 3. 클라우드가 `requirements.txt`(streamlit, plotly)만 설치하고 공개 URL을 생성합니다.
    - 데스크톱용 `pywebview` 는 웹 배포에 불필요하므로 `requirements-desktop.txt` 로 분리되어 있습니다.
 
-### 3) 데이터 자동 갱신 (GitHub Actions)
+### 3) 웹 데이터 자동 갱신 = **로컬 Mac 이 담당** (GitHub Actions 아님)
 
-`.github/workflows/update-data.yml` 이 **매일 KST 06:00** 에 `fetch_data.py` 를 실행해
-`data/apartment_data.json` 을 갱신·커밋합니다. 푸시가 일어나면 Streamlit Cloud가 자동 재배포됩니다.
+> ⚠️ 국토교통부 실거래가 API(`apis.data.go.kr`)는 **해외 IP(=GitHub Actions 서버)에서 접속이 차단**됩니다.
+> 그래서 클라우드에서 수집하는 GitHub Actions 방식은 쓸 수 없습니다.
 
-- **저장소 설정 필요**: GitHub 저장소 → **Settings → Secrets and variables → Actions → New repository secret**
-  - 이름: `MOLIT_API_KEY`, 값: 공공데이터포털 인증키
-- 수동 실행: 저장소 **Actions 탭 → "아파트 실거래 데이터 자동 갱신" → Run workflow**
+대신 **한국에 있는 로컬 Mac 이 수집해서 GitHub 에 push** 하면 Streamlit Cloud 가 자동 재배포됩니다.
+
+- `scripts/fetch_and_push.sh` : 수집 → 데이터 변경 시 자동 커밋·push
+- launchd 가 **6시간마다(00·06·12·18시)** 이 스크립트를 실행 (내 Mac 이 켜져 있을 때)
+- 안전장치: 수집이 `20/25` 미만이면 기존 데이터를 보존하고 push 하지 않음(웹이 "데이터 없음"으로 망가지는 것 방지)
+- push 인증: 로컬 `~/.git-credentials`(권한 600)에 저장된 GitHub 토큰 사용 → **GitHub Secret 불필요**
 - 앱은 `@st.cache_data(ttl=3600)` 으로 최대 1시간 내 최신 데이터를 반영합니다.
 
 ### 배포 시 주의
 
-- **인증키 유출 금지**: `.env` / `example.env.py` 는 절대 커밋하지 마세요(이미 gitignore 처리됨). 키는 GitHub Secrets 로만.
+- **인증키 유출 금지**: `.env` / `example.env.py` 는 절대 커밋하지 마세요(이미 gitignore 처리됨). 인증키는 **로컬 `.env` 에만**.
 - **출처·면책**: 화면에 출처(국토부 실거래가)와 "참고용, 투자 판단 근거 아님" 문구가 표시됩니다.
 - **약관**: 공공데이터포털 활용 약관(출처 표기·재배포)과 GeoJSON 라이선스(southkorea/seoul-maps)를 확인하세요.
 - 서버가 국토부 API를 직접 호출하지 않고(사전 생성된 JSON 서비스), 트래픽 제한 걱정이 없습니다.

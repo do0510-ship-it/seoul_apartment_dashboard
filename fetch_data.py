@@ -251,16 +251,25 @@ def main():
             "yearly": yearly,
         }
 
-    with open(os.path.join(OUT_DIR, "apartment_data.json"), "w", encoding="utf-8") as f:
-        json.dump(result, f, ensure_ascii=False, indent=2)
+    # 원본 거래 캐시는 항상 기록(디버깅용)
     with open(os.path.join(OUT_DIR, "_raw_transactions.json"), "w", encoding="utf-8") as f:
         json.dump(all_raw, f, ensure_ascii=False, indent=2)
 
-    print("\n완료 → data/apartment_data.json")
+    # 안전장치: 수집이 부족하면(예: API 일일 한도·네트워크 실패) 앱용 파일을 덮어쓰지 않는다.
+    # -> 기존의 정상 데이터를 보존해 웹이 "데이터 없음"으로 망가지는 것을 막는다.
     filled = sum(1 for d in result["districts"].values() if d["daily"])
+    MIN_OK = 20  # 25개 구 중 최소 20개 이상 데이터가 있어야 정상으로 간주
+    if filled < MIN_OK:
+        print(f"[중단] 수집이 부족합니다 ({filled}/25). "
+              f"data/apartment_data.json 을 덮어쓰지 않고 기존 데이터를 그대로 보존합니다.")
+        print("       (원인: API 일일 호출 한도 초과 또는 일시적 네트워크 오류일 수 있음)")
+        sys.exit(2)
+
+    with open(os.path.join(OUT_DIR, "apartment_data.json"), "w", encoding="utf-8") as f:
+        json.dump(result, f, ensure_ascii=False, indent=2)
+
+    print("\n완료 → data/apartment_data.json")
     print(f"데이터가 있는 자치구: {filled}/25")
-    if filled == 0:
-        print("[주의] 모든 구가 비었습니다. 인증키가 올바른지, 활용신청 승인이 됐는지 확인하세요.")
 
 
 if __name__ == "__main__":

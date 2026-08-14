@@ -5,13 +5,11 @@
   <key>Label</key>
   <string>com.local.seoul.apt.fetch</string>
 
-  <!-- 프로젝트 venv 의 python 으로 fetch_data.py 실행 -->
+  <!-- 수집 후 데이터가 바뀌면 GitHub 에 자동 push (웹앱 자동 갱신) -->
   <key>ProgramArguments</key>
   <array>
-    <string>/Users/rist/seoul_apartment_dashboard/.venv/bin/python</string>
-    <string>/Users/rist/seoul_apartment_dashboard/fetch_data.py</string>
-    <string>--months</string>
-    <string>24</string>
+    <string>/bin/bash</string>
+    <string>/Users/rist/seoul_apartment_dashboard/scripts/fetch_and_push.sh</string>
   </array>
 
   <!-- .env(인증키)를 읽도록 작업 디렉터리를 프로젝트 폴더로 지정 -->

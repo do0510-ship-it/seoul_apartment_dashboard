@@ -1,7 +1,7 @@
 {
   "meta": {
     "source": "국토교통부 아파트 매매 실거래가 (공공데이터포털 15126469)",
-    "generated_at": "2026-09-23 12:09:22",
+    "generated_at": "2026-09-26 00:15:10",
     "months_span": 24,
     "unit": "만원/㎡ (전용면적 기준 평균 거래단가)",
     "note": "일별은 실거래 평균 기반 참고치이며 거래건수가 적은 날은 변동성이 큼"
@@ -6247,15 +6247,15 @@
         },
         {
           "date": "2026-05-30",
-          "avg_manwon_per_m2": 1995.3,
-          "count": 2,
-          "pct": 20.41
+          "avg_manwon_per_m2": 2453.6,
+          "count": 1,
+          "pct": 48.07
         },
         {
           "date": "2026-06-01",
           "avg_manwon_per_m2": 1921.9,
           "count": 4,
-          "pct": -3.68
+          "pct": -21.67
         },
         {
           "date": "2026-06-02",
@@ -6661,15 +6661,15 @@
         },
         {
           "date": "2026-09-04",
-          "avg_manwon_per_m2": 2179.0,
-          "count": 3,
-          "pct": 144.91
+          "avg_manwon_per_m2": 2263.9,
+          "count": 5,
+          "pct": 154.46
         },
         {
           "date": "2026-09-05",
           "avg_manwon_per_m2": 3303.1,
           "count": 1,
-          "pct": 51.59
+          "pct": 45.9
         },
         {
           "date": "2026-09-07",
@@ -6679,15 +6679,15 @@
         },
         {
           "date": "2026-09-09",
-          "avg_manwon_per_m2": 1007.6,
-          "count": 1,
-          "pct": -34.2
+          "avg_manwon_per_m2": 939.9,
+          "count": 2,
+          "pct": -38.62
         },
         {
           "date": "2026-09-12",
           "avg_manwon_per_m2": 1649.2,
           "count": 1,
-          "pct": 63.68
+          "pct": 75.47
         }
       ],
       "monthly": [
@@ -6807,15 +6807,15 @@
         },
         {
           "period": "2026-05",
-          "avg_manwon_per_m2": 1787.2,
-          "count": 131,
-          "pct": 5.35
+          "avg_manwon_per_m2": 1789.1,
+          "count": 130,
+          "pct": 5.46
         },
         {
           "period": "2026-06",
           "avg_manwon_per_m2": 1723.8,
           "count": 61,
-          "pct": -3.55
+          "pct": -3.65
         },
         {
           "period": "2026-07",
@@ -6831,9 +6831,9 @@
         },
         {
           "period": "2026-09",
-          "avg_manwon_per_m2": 1864.8,
-          "count": 8,
-          "pct": -8.02
+          "avg_manwon_per_m2": 1870.3,
+          "count": 11,
+          "pct": -7.75
         }
       ],
       "yearly": [
@@ -6851,9 +6851,9 @@
         },
         {
           "period": "2026",
-          "avg_manwon_per_m2": 1726.2,
-          "count": 691,
-          "pct": 11.99
+          "avg_manwon_per_m2": 1727.2,
+          "count": 693,
+          "pct": 12.05
         }
       ]
     },
@@ -9618,15 +9618,15 @@
         },
         {
           "date": "2026-04-03",
-          "avg_manwon_per_m2": 3282.3,
-          "count": 4,
-          "pct": 46.23
+          "avg_manwon_per_m2": 3496.9,
+          "count": 3,
+          "pct": 55.79
         },
         {
           "date": "2026-04-04",
           "avg_manwon_per_m2": 3231.3,
           "count": 4,
-          "pct": -1.55
+          "pct": -7.6
         },
         {
           "date": "2026-04-06",
@@ -9960,15 +9960,15 @@
         },
         {
           "date": "2026-06-01",
-          "avg_manwon_per_m2": 2997.5,
-          "count": 3,
-          "pct": 38.49
+          "avg_manwon_per_m2": 3413.2,
+          "count": 2,
+          "pct": 57.7
         },
         {
           "date": "2026-06-02",
           "avg_manwon_per_m2": 3063.1,
           "count": 2,
-          "pct": 2.19
+          "pct": -10.26
         },
         {
           "date": "2026-06-04",
@@ -10520,27 +10520,27 @@
         },
         {
           "period": "2026-04",
-          "avg_manwon_per_m2": 2511.4,
-          "count": 143,
-          "pct": -1.09
+          "avg_manwon_per_m2": 2510.5,
+          "count": 142,
+          "pct": -1.12
         },
         {
           "period": "2026-05",
           "avg_manwon_per_m2": 2474.6,
           "count": 166,
-          "pct": -1.47
+          "pct": -1.43
         },
         {
           "period": "2026-06",
-          "avg_manwon_per_m2": 2607.0,
-          "count": 66,
-          "pct": 5.35
+          "avg_manwon_per_m2": 2613.8,
+          "count": 65,
+          "pct": 5.63
         },
         {
           "period": "2026-07",
           "avg_manwon_per_m2": 2679.9,
           "count": 71,
-          "pct": 2.8
+          "pct": 2.53
         },
         {
           "period": "2026-08",
@@ -10570,9 +10570,9 @@
         },
         {
           "period": "2026",
-          "avg_manwon_per_m2": 2540.5,
-          "count": 761,
-          "pct": 8.34
+          "avg_manwon_per_m2": 2540.8,
+          "count": 759,
+          "pct": 8.35
         }
       ]
     },
@@ -14506,10 +14506,16 @@
           "pct": 33.01
         },
         {
+          "date": "2026-09-10",
+          "avg_manwon_per_m2": 2554.7,
+          "count": 2,
+          "pct": 5.09
+        },
+        {
           "date": "2026-09-11",
           "avg_manwon_per_m2": 2519.4,
           "count": 1,
-          "pct": 3.64
+          "pct": -1.38
         },
         {
           "date": "2026-09-12",
@@ -14518,10 +14524,16 @@
           "pct": 26.74
         },
         {
+          "date": "2026-09-13",
+          "avg_manwon_per_m2": 2589.8,
+          "count": 1,
+          "pct": -18.89
+        },
+        {
           "date": "2026-09-16",
           "avg_manwon_per_m2": 2885.7,
           "count": 1,
-          "pct": -9.63
+          "pct": 11.43
         },
         {
           "date": "2026-09-17",
@@ -14671,9 +14683,9 @@
         },
         {
           "period": "2026-09",
-          "avg_manwon_per_m2": 2906.6,
-          "count": 16,
-          "pct": 21.14
+          "avg_manwon_per_m2": 2852.9,
+          "count": 19,
+          "pct": 18.91
         }
       ],
       "yearly": [
@@ -14691,16 +14703,16 @@
         },
         {
           "period": "2026",
-          "avg_manwon_per_m2": 2384.3,
-          "count": 1134,
-          "pct": 15.43
+          "avg_manwon_per_m2": 2384.8,
+          "count": 1137,
+          "pct": 15.46
         }
       ]
     },
     "광진구": {
       "code": "11215",
       "latest_change_pct": -10.96,
-      "latest_date": "2026-09-19",
+      "latest_date": "2026-09-21",
       "daily": [
         {
           "date": "2024-10-01",
@@ -18237,28 +18249,58 @@
           "pct": -40.41
         },
         {
+          "date": "2026-09-08",
+          "avg_manwon_per_m2": 2553.8,
+          "count": 1,
+          "pct": 112.48
+        },
+        {
           "date": "2026-09-10",
           "avg_manwon_per_m2": 1053.0,
           "count": 1,
-          "pct": -12.39
+          "pct": -58.77
+        },
+        {
+          "date": "2026-09-11",
+          "avg_manwon_per_m2": 1414.7,
+          "count": 2,
+          "pct": 34.35
+        },
+        {
+          "date": "2026-09-14",
+          "avg_manwon_per_m2": 1891.5,
+          "count": 1,
+          "pct": 33.7
         },
         {
           "date": "2026-09-15",
           "avg_manwon_per_m2": 886.5,
           "count": 1,
-          "pct": -15.81
+          "pct": -53.13
         },
         {
           "date": "2026-09-16",
-          "avg_manwon_per_m2": 1252.1,
+          "avg_manwon_per_m2": 1315.7,
+          "count": 2,
+          "pct": 48.42
+        },
+        {
+          "date": "2026-09-18",
+          "avg_manwon_per_m2": 1107.0,
           "count": 1,
-          "pct": 41.24
+          "pct": -15.86
         },
         {
           "date": "2026-09-19",
           "avg_manwon_per_m2": 1022.7,
           "count": 1,
-          "pct": -18.32
+          "pct": -7.62
+        },
+        {
+          "date": "2026-09-21",
+          "avg_manwon_per_m2": 2732.0,
+          "count": 1,
+          "pct": 167.14
         }
       ],
       "monthly": [
@@ -18402,9 +18444,9 @@
         },
         {
           "period": "2026-09",
-          "avg_manwon_per_m2": 1430.9,
-          "count": 11,
-          "pct": -16.73
+          "avg_manwon_per_m2": 1568.5,
+          "count": 18,
+          "pct": -8.72
         }
       ],
       "yearly": [
@@ -18422,15 +18464,15 @@
         },
         {
           "period": "2026",
-          "avg_manwon_per_m2": 1897.1,
-          "count": 767,
-          "pct": 7.14
+          "avg_manwon_per_m2": 1896.1,
+          "count": 774,
+          "pct": 7.08
         }
       ]
     },
     "동대문구": {
       "code": "11230",
-      "latest_change_pct": -6.45,
+      "latest_change_pct": -6.04,
       "latest_date": "2026-09-21",
       "daily": [
         {
@@ -22449,15 +22491,15 @@
         },
         {
           "date": "2026-08-20",
-          "avg_manwon_per_m2": 1077.8,
-          "count": 3,
-          "pct": 8.99
+          "avg_manwon_per_m2": 1330.6,
+          "count": 2,
+          "pct": 34.55
         },
         {
           "date": "2026-08-21",
           "avg_manwon_per_m2": 1094.5,
           "count": 2,
-          "pct": 1.55
+          "pct": -17.74
         },
         {
           "date": "2026-08-22",
@@ -22515,15 +22557,15 @@
         },
         {
           "date": "2026-09-01",
-          "avg_manwon_per_m2": 1165.9,
-          "count": 2,
-          "pct": -35.87
+          "avg_manwon_per_m2": 1177.5,
+          "count": 3,
+          "pct": -35.23
         },
         {
           "date": "2026-09-02",
           "avg_manwon_per_m2": 718.7,
           "count": 2,
-          "pct": -38.36
+          "pct": -38.96
         },
         {
           "date": "2026-09-03",
@@ -22533,15 +22575,15 @@
         },
         {
           "date": "2026-09-04",
-          "avg_manwon_per_m2": 1486.3,
-          "count": 7,
-          "pct": 19.95
+          "avg_manwon_per_m2": 1415.3,
+          "count": 8,
+          "pct": 14.22
         },
         {
           "date": "2026-09-05",
           "avg_manwon_per_m2": 1348.2,
           "count": 4,
-          "pct": -9.29
+          "pct": -4.74
         },
         {
           "date": "2026-09-07",
@@ -22569,15 +22611,15 @@
         },
         {
           "date": "2026-09-11",
-          "avg_manwon_per_m2": 1436.6,
-          "count": 2,
-          "pct": 53.83
+          "avg_manwon_per_m2": 1311.8,
+          "count": 3,
+          "pct": 40.46
         },
         {
           "date": "2026-09-12",
           "avg_manwon_per_m2": 1152.6,
           "count": 2,
-          "pct": -19.77
+          "pct": -12.14
         },
         {
           "date": "2026-09-13",
@@ -22610,10 +22652,16 @@
           "pct": 23.6
         },
         {
+          "date": "2026-09-19",
+          "avg_manwon_per_m2": 1110.9,
+          "count": 2,
+          "pct": 2.59
+        },
+        {
           "date": "2026-09-21",
-          "avg_manwon_per_m2": 1809.2,
-          "count": 1,
-          "pct": 67.07
+          "avg_manwon_per_m2": 1481.9,
+          "count": 2,
+          "pct": 33.4
         }
       ],
       "monthly": [
@@ -22751,15 +22799,15 @@
         },
         {
           "period": "2026-08",
-          "avg_manwon_per_m2": 1416.5,
-          "count": 136,
-          "pct": -6.45
+          "avg_manwon_per_m2": 1422.7,
+          "count": 135,
+          "pct": -6.04
         },
         {
           "period": "2026-09",
-          "avg_manwon_per_m2": 1236.3,
-          "count": 44,
-          "pct": -12.72
+          "avg_manwon_per_m2": 1219.1,
+          "count": 50,
+          "pct": -14.31
         }
       ],
       "yearly": [
@@ -22777,16 +22825,16 @@
         },
         {
           "period": "2026",
-          "avg_manwon_per_m2": 1381.4,
-          "count": 2193,
-          "pct": 6.9
+          "avg_manwon_per_m2": 1381.0,
+          "count": 2198,
+          "pct": 6.87
         }
       ]
     },
     "중랑구": {
       "code": "11260",
       "latest_change_pct": -7.22,
-      "latest_date": "2026-09-22",
+      "latest_date": "2026-09-23",
       "daily": [
         {
           "date": "2024-10-01",
@@ -26642,15 +26690,15 @@
         },
         {
           "date": "2026-09-01",
-          "avg_manwon_per_m2": 983.0,
-          "count": 6,
-          "pct": 3.6
+          "avg_manwon_per_m2": 989.0,
+          "count": 7,
+          "pct": 4.24
         },
         {
           "date": "2026-09-02",
           "avg_manwon_per_m2": 1105.5,
           "count": 6,
-          "pct": 12.46
+          "pct": 11.78
         },
         {
           "date": "2026-09-03",
@@ -26702,51 +26750,57 @@
         },
         {
           "date": "2026-09-12",
-          "avg_manwon_per_m2": 975.5,
-          "count": 5,
-          "pct": 20.97
+          "avg_manwon_per_m2": 933.0,
+          "count": 6,
+          "pct": 15.7
         },
         {
           "date": "2026-09-14",
-          "avg_manwon_per_m2": 1224.1,
-          "count": 3,
-          "pct": 25.48
+          "avg_manwon_per_m2": 1227.6,
+          "count": 4,
+          "pct": 31.58
         },
         {
           "date": "2026-09-15",
           "avg_manwon_per_m2": 977.3,
           "count": 3,
-          "pct": -20.16
+          "pct": -20.39
         },
         {
           "date": "2026-09-16",
-          "avg_manwon_per_m2": 1168.7,
-          "count": 2,
-          "pct": 19.58
+          "avg_manwon_per_m2": 1034.9,
+          "count": 3,
+          "pct": 5.89
         },
         {
           "date": "2026-09-18",
           "avg_manwon_per_m2": 1192.3,
           "count": 1,
-          "pct": 2.02
+          "pct": 15.21
         },
         {
           "date": "2026-09-19",
-          "avg_manwon_per_m2": 1078.7,
-          "count": 3,
-          "pct": -9.53
+          "avg_manwon_per_m2": 1048.4,
+          "count": 6,
+          "pct": -12.07
         },
         {
           "date": "2026-09-20",
           "avg_manwon_per_m2": 934.8,
           "count": 1,
-          "pct": -13.34
+          "pct": -10.84
         },
         {
           "date": "2026-09-22",
           "avg_manwon_per_m2": 1306.0,
           "count": 2,
           "pct": 39.71
+        },
+        {
+          "date": "2026-09-23",
+          "avg_manwon_per_m2": 907.6,
+          "count": 2,
+          "pct": -30.51
         }
       ],
       "monthly": [
@@ -26890,9 +26944,9 @@
         },
         {
           "period": "2026-09",
-          "avg_manwon_per_m2": 1065.2,
-          "count": 67,
-          "pct": -8.35
+          "avg_manwon_per_m2": 1052.5,
+          "count": 76,
+          "pct": -9.44
         }
       ],
       "yearly": [
@@ -26910,9 +26964,9 @@
         },
         {
           "period": "2026",
-          "avg_manwon_per_m2": 1053.7,
-          "count": 2344,
-          "pct": 9.34
+          "avg_manwon_per_m2": 1053.3,
+          "count": 2353,
+          "pct": 9.3
         }
       ]
     },
@@ -27583,21 +27637,21 @@
         },
         {
           "date": "2025-01-26",
-          "avg_manwon_per_m2": 1144.9,
+          "avg_manwon_per_m2": 1169.4,
           "count": 4,
-          "pct": -0.21
+          "pct": 1.93
         },
         {
           "date": "2025-01-27",
-          "avg_manwon_per_m2": 1362.0,
+          "avg_manwon_per_m2": 1362.6,
           "count": 1,
-          "pct": 18.96
+          "pct": 16.52
         },
         {
           "date": "2025-01-30",
           "avg_manwon_per_m2": 892.6,
           "count": 1,
-          "pct": -34.46
+          "pct": -34.49
         },
         {
           "date": "2025-01-31",
@@ -31077,15 +31131,15 @@
         },
         {
           "period": "2025-01",
-          "avg_manwon_per_m2": 1104.7,
+          "avg_manwon_per_m2": 1105.2,
           "count": 195,
-          "pct": 5.28
+          "pct": 5.33
         },
         {
           "period": "2025-02",
           "avg_manwon_per_m2": 1109.0,
           "count": 260,
-          "pct": 0.39
+          "pct": 0.34
         },
         {
           "period": "2025-03",
@@ -47703,7 +47757,7 @@
     },
     "서대문구": {
       "code": "11410",
-      "latest_change_pct": -7.5,
+      "latest_change_pct": -7.66,
       "latest_date": "2026-09-23",
       "daily": [
         {
@@ -51368,15 +51422,15 @@
         },
         {
           "date": "2026-07-01",
-          "avg_manwon_per_m2": 1562.6,
-          "count": 11,
-          "pct": 54.84
+          "avg_manwon_per_m2": 1626.4,
+          "count": 10,
+          "pct": 61.16
         },
         {
           "date": "2026-07-02",
           "avg_manwon_per_m2": 1877.7,
           "count": 7,
-          "pct": 20.17
+          "pct": 15.45
         },
         {
           "date": "2026-07-03",
@@ -51964,15 +52018,15 @@
         },
         {
           "period": "2026-07",
-          "avg_manwon_per_m2": 1544.9,
-          "count": 239,
-          "pct": 3.69
+          "avg_manwon_per_m2": 1547.5,
+          "count": 238,
+          "pct": 3.87
         },
         {
           "period": "2026-08",
           "avg_manwon_per_m2": 1429.0,
           "count": 126,
-          "pct": -7.5
+          "pct": -7.66
         },
         {
           "period": "2026-09",
@@ -51996,9 +52050,9 @@
         },
         {
           "period": "2026",
-          "avg_manwon_per_m2": 1407.0,
-          "count": 2014,
-          "pct": -0.19
+          "avg_manwon_per_m2": 1407.3,
+          "count": 2013,
+          "pct": -0.17
         }
       ]
     },
@@ -60570,7 +60624,7 @@
     },
     "강서구": {
       "code": "11500",
-      "latest_change_pct": -4.0,
+      "latest_change_pct": -4.04,
       "latest_date": "2026-09-22",
       "daily": [
         {
@@ -61996,190 +62050,10 @@
           "pct": 14.59
         },
         {
-          "date": "2025-06-01",
-          "avg_manwon_per_m2": 1070.5,
-          "count": 6,
-          "pct": -8.15
-        },
-        {
-          "date": "2025-06-02",
-          "avg_manwon_per_m2": 1179.0,
-          "count": 18,
-          "pct": 10.14
-        },
-        {
-          "date": "2025-06-03",
-          "avg_manwon_per_m2": 1199.7,
-          "count": 28,
-          "pct": 1.76
-        },
-        {
-          "date": "2025-06-04",
-          "avg_manwon_per_m2": 1287.2,
-          "count": 9,
-          "pct": 7.29
-        },
-        {
-          "date": "2025-06-05",
-          "avg_manwon_per_m2": 1239.0,
-          "count": 24,
-          "pct": -3.74
-        },
-        {
-          "date": "2025-06-06",
-          "avg_manwon_per_m2": 1367.3,
-          "count": 22,
-          "pct": 10.36
-        },
-        {
-          "date": "2025-06-07",
-          "avg_manwon_per_m2": 1487.9,
-          "count": 17,
-          "pct": 8.82
-        },
-        {
-          "date": "2025-06-08",
-          "avg_manwon_per_m2": 1130.0,
-          "count": 2,
-          "pct": -24.05
-        },
-        {
-          "date": "2025-06-09",
-          "avg_manwon_per_m2": 1449.5,
-          "count": 28,
-          "pct": 28.27
-        },
-        {
-          "date": "2025-06-10",
-          "avg_manwon_per_m2": 1086.2,
-          "count": 26,
-          "pct": -25.06
-        },
-        {
-          "date": "2025-06-11",
-          "avg_manwon_per_m2": 1073.7,
-          "count": 16,
-          "pct": -1.15
-        },
-        {
-          "date": "2025-06-12",
-          "avg_manwon_per_m2": 1232.3,
-          "count": 18,
-          "pct": 14.77
-        },
-        {
-          "date": "2025-06-13",
-          "avg_manwon_per_m2": 1417.9,
-          "count": 20,
-          "pct": 15.06
-        },
-        {
-          "date": "2025-06-14",
-          "avg_manwon_per_m2": 1298.0,
-          "count": 45,
-          "pct": -8.46
-        },
-        {
-          "date": "2025-06-15",
-          "avg_manwon_per_m2": 1284.8,
-          "count": 9,
-          "pct": -1.02
-        },
-        {
-          "date": "2025-06-16",
-          "avg_manwon_per_m2": 1216.5,
-          "count": 30,
-          "pct": -5.32
-        },
-        {
-          "date": "2025-06-17",
-          "avg_manwon_per_m2": 1401.2,
-          "count": 22,
-          "pct": 15.18
-        },
-        {
-          "date": "2025-06-18",
-          "avg_manwon_per_m2": 1493.9,
-          "count": 23,
-          "pct": 6.62
-        },
-        {
-          "date": "2025-06-19",
-          "avg_manwon_per_m2": 1333.1,
-          "count": 15,
-          "pct": -10.76
-        },
-        {
-          "date": "2025-06-20",
-          "avg_manwon_per_m2": 1291.9,
-          "count": 27,
-          "pct": -3.09
-        },
-        {
-          "date": "2025-06-21",
-          "avg_manwon_per_m2": 1312.8,
-          "count": 35,
-          "pct": 1.62
-        },
-        {
-          "date": "2025-06-22",
-          "avg_manwon_per_m2": 1329.3,
-          "count": 11,
-          "pct": 1.26
-        },
-        {
-          "date": "2025-06-23",
-          "avg_manwon_per_m2": 1249.5,
-          "count": 22,
-          "pct": -6.0
-        },
-        {
-          "date": "2025-06-24",
-          "avg_manwon_per_m2": 1194.0,
-          "count": 16,
-          "pct": -4.44
-        },
-        {
-          "date": "2025-06-25",
-          "avg_manwon_per_m2": 1259.7,
-          "count": 24,
-          "pct": 5.5
-        },
-        {
-          "date": "2025-06-26",
-          "avg_manwon_per_m2": 1340.3,
-          "count": 21,
-          "pct": 6.4
-        },
-        {
-          "date": "2025-06-27",
-          "avg_manwon_per_m2": 1434.0,
-          "count": 37,
-          "pct": 6.99
-        },
-        {
-          "date": "2025-06-28",
-          "avg_manwon_per_m2": 1306.7,
-          "count": 20,
-          "pct": -8.88
-        },
-        {
-          "date": "2025-06-29",
-          "avg_manwon_per_m2": 1365.4,
-          "count": 3,
-          "pct": 4.49
-        },
-        {
-          "date": "2025-06-30",
-          "avg_manwon_per_m2": 1091.0,
-          "count": 11,
-          "pct": -20.1
-        },
-        {
           "date": "2025-07-01",
           "avg_manwon_per_m2": 1592.2,
           "count": 46,
-          "pct": 45.94
+          "pct": 36.61
         },
         {
           "date": "2025-07-02",
@@ -64325,15 +64199,15 @@
         },
         {
           "date": "2026-07-10",
-          "avg_manwon_per_m2": 1333.8,
-          "count": 21,
-          "pct": -1.15
+          "avg_manwon_per_m2": 1339.3,
+          "count": 20,
+          "pct": -0.74
         },
         {
           "date": "2026-07-11",
           "avg_manwon_per_m2": 1385.1,
           "count": 28,
-          "pct": 3.85
+          "pct": 3.42
         },
         {
           "date": "2026-07-12",
@@ -64794,16 +64668,10 @@
           "pct": 4.58
         },
         {
-          "period": "2025-06",
-          "avg_manwon_per_m2": 1296.0,
-          "count": 605,
-          "pct": 0.94
-        },
-        {
           "period": "2025-07",
           "avg_manwon_per_m2": 1225.8,
           "count": 271,
-          "pct": -5.42
+          "pct": -4.53
         },
         {
           "period": "2025-08",
@@ -64873,15 +64741,15 @@
         },
         {
           "period": "2026-07",
-          "avg_manwon_per_m2": 1451.2,
-          "count": 397,
-          "pct": 8.79
+          "avg_manwon_per_m2": 1451.8,
+          "count": 396,
+          "pct": 8.83
         },
         {
           "period": "2026-08",
           "avg_manwon_per_m2": 1393.2,
           "count": 259,
-          "pct": -4.0
+          "pct": -4.04
         },
         {
           "period": "2026-09",
@@ -64899,15 +64767,15 @@
         },
         {
           "period": "2025",
-          "avg_manwon_per_m2": 1282.1,
-          "count": 4645,
-          "pct": 10.55
+          "avg_manwon_per_m2": 1280.0,
+          "count": 4040,
+          "pct": 10.37
         },
         {
           "period": "2026",
           "avg_manwon_per_m2": 1359.6,
-          "count": 3532,
-          "pct": 6.04
+          "count": 3531,
+          "pct": 6.22
         }
       ]
     },
@@ -72825,15 +72693,15 @@
         },
         {
           "date": "2026-09-15",
-          "avg_manwon_per_m2": 688.5,
-          "count": 1,
-          "pct": -39.93
+          "avg_manwon_per_m2": 789.1,
+          "count": 2,
+          "pct": -31.16
         },
         {
           "date": "2026-09-16",
           "avg_manwon_per_m2": 542.1,
           "count": 2,
-          "pct": -21.26
+          "pct": -31.3
         },
         {
           "date": "2026-09-17",
@@ -73007,9 +72875,9 @@
         },
         {
           "period": "2026-09",
-          "avg_manwon_per_m2": 953.3,
-          "count": 47,
-          "pct": 2.85
+          "avg_manwon_per_m2": 952.0,
+          "count": 48,
+          "pct": 2.71
         }
       ],
       "yearly": [
@@ -73028,7 +72896,7 @@
         {
           "period": "2026",
           "avg_manwon_per_m2": 940.3,
-          "count": 1057,
+          "count": 1058,
           "pct": 3.84
         }
       ]
@@ -89309,15 +89177,15 @@
         },
         {
           "date": "2026-06-15",
-          "avg_manwon_per_m2": 2860.7,
-          "count": 10,
-          "pct": -17.01
+          "avg_manwon_per_m2": 3021.5,
+          "count": 9,
+          "pct": -12.35
         },
         {
           "date": "2026-06-16",
           "avg_manwon_per_m2": 3278.1,
           "count": 5,
-          "pct": 14.59
+          "pct": 8.49
         },
         {
           "date": "2026-06-17",
@@ -89977,15 +89845,15 @@
         },
         {
           "period": "2026-06",
-          "avg_manwon_per_m2": 3022.6,
-          "count": 198,
-          "pct": -10.35
+          "avg_manwon_per_m2": 3030.7,
+          "count": 197,
+          "pct": -10.11
         },
         {
           "period": "2026-07",
           "avg_manwon_per_m2": 2840.2,
           "count": 139,
-          "pct": -6.03
+          "pct": -6.29
         },
         {
           "period": "2026-08",
@@ -90015,15 +89883,15 @@
         },
         {
           "period": "2026",
-          "avg_manwon_per_m2": 3021.7,
-          "count": 1645,
-          "pct": 3.06
+          "avg_manwon_per_m2": 3022.7,
+          "count": 1644,
+          "pct": 3.09
         }
       ]
     },
     "강남구": {
       "code": "11680",
-      "latest_change_pct": -10.07,
+      "latest_change_pct": -9.83,
       "latest_date": "2026-09-22",
       "daily": [
         {
@@ -93856,15 +93724,15 @@
         },
         {
           "date": "2026-08-03",
-          "avg_manwon_per_m2": 3483.0,
-          "count": 2,
-          "pct": -17.37
+          "avg_manwon_per_m2": 4479.7,
+          "count": 1,
+          "pct": 6.27
         },
         {
           "date": "2026-08-04",
           "avg_manwon_per_m2": 3756.2,
           "count": 5,
-          "pct": 7.84
+          "pct": -16.15
         },
         {
           "date": "2026-08-05",
@@ -94260,15 +94128,15 @@
         },
         {
           "period": "2026-08",
-          "avg_manwon_per_m2": 3305.1,
-          "count": 96,
-          "pct": -10.07
+          "avg_manwon_per_m2": 3313.7,
+          "count": 95,
+          "pct": -9.83
         },
         {
           "period": "2026-09",
           "avg_manwon_per_m2": 3716.7,
           "count": 38,
-          "pct": 12.45
+          "pct": 12.16
         }
       ],
       "yearly": [
@@ -94286,9 +94154,9 @@
         },
         {
           "period": "2026",
-          "avg_manwon_per_m2": 3397.9,
-          "count": 1994,
-          "pct": 5.45
+          "avg_manwon_per_m2": 3398.4,
+          "count": 1993,
+          "pct": 5.47
         }
       ]
     },
@@ -98415,15 +98283,15 @@
         },
         {
           "date": "2026-09-18",
-          "avg_manwon_per_m2": 3056.4,
-          "count": 3,
-          "pct": 64.02
+          "avg_manwon_per_m2": 2828.2,
+          "count": 4,
+          "pct": 51.78
         },
         {
           "date": "2026-09-19",
           "avg_manwon_per_m2": 2652.9,
           "count": 2,
-          "pct": -13.2
+          "pct": -6.2
         },
         {
           "date": "2026-09-22",
@@ -98573,9 +98441,9 @@
         },
         {
           "period": "2026-09",
-          "avg_manwon_per_m2": 2495.4,
-          "count": 53,
-          "pct": -6.39
+          "avg_manwon_per_m2": 2488.8,
+          "count": 54,
+          "pct": -6.64
         }
       ],
       "yearly": [
@@ -98593,9 +98461,9 @@
         },
         {
           "period": "2026",
-          "avg_manwon_per_m2": 2655.3,
-          "count": 3004,
-          "pct": 15.34
+          "avg_manwon_per_m2": 2655.2,
+          "count": 3005,
+          "pct": 15.33
         }
       ]
     },
